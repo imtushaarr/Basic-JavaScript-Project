@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch Project</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    html, body{
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #101010eb;
+    }
+
+    .stop-watch{
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    h2{
+        color: white;
+        font-size: 100px;
+    }
+    span{
+        color: white;
+        font-size: 100px;
+    }
+</style>
+<body>
+    <div class="stop-watch">
+        <div class="hrs"><h2>00</h2></div>
+        <div><span> : </span></div>
+        <div class="min"><h2>00</h2></div>
+        <div><span> : </span></div>
+        <div class="sec"><h2>00</h2></div>
+    </div>
+</body>
+
+<script>
+    let hrs = document.getElementsByClassName('hrs')[0].getElementsByTagName('h2')[0];
+    let min = document.getElementsByClassName('min')[0].getElementsByTagName('h2')[0];
+    let sec = document.getElementsByClassName('sec')[0].getElementsByTagName('h2')[0];
+
+    let hours = 0;
+    let minutes = 0;
+    let seconds = 0;
+
+    function stopWatch() {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+        }
+        if (minutes === 60) {
+            minutes = 0;
+            hours++;
+        }
+
+        // Update the displayed time
+        sec.textContent = seconds < 10 ? '0' + seconds : seconds;
+        min.textContent = minutes < 10 ? '0' + minutes : minutes;
+        hrs.textContent = hours < 10 ? '0' + hours : hours;
+    }
+
+    setInterval(stopWatch, 1000); // Call stopWatch every second
+</script>
+</html>
